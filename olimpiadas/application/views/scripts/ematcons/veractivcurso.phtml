@@ -1,0 +1,34 @@
+<? //print_r($this->actalum); ?>
+<? if ($this->layout()->actalum) {?>
+ 
+    <!-- A table de las actividades. -->
+    <table>
+        <tr>
+            <th>Rut</th>
+            <th>Nombre</th>
+            <th>Modulo</th>
+            <th>Ingreso</th>
+            <th>Termino</th>
+            <th>Estado</th>
+            <th>Puntaje</th>
+        </tr>
+ 
+        <? foreach($this->layout()->actalum as $key => $val){ ?>
+        <tr>
+            <td><? echo $this->escape($val['rut']); ?></td>
+            <td><? echo $this->escape($val['nombre']); ?></td>
+            <td><? echo $this->escape($val['modulo']); ?></td>
+            <td><? echo $this->escape($val['ingreso']); ?></td>
+            <td><? echo $this->escape($val['termino']); ?></td>
+            <td><? echo $this->escape($val['estado']); ?></td>
+            <td><? echo $this->escape($val['puntaje']); ?></td>
+        </tr>
+        <? } ?>
+ 
+    </table>
+ 
+<? }else{ ?>
+ 
+    <p>No tengo actividades del curso para mostrar</p>
+ 
+<? } ?>

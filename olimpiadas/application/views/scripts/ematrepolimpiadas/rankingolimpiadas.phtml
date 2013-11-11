@@ -1,0 +1,45 @@
+
+<div id="view-content">
+    <div class="box">
+
+        <div class="ranking">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="tit_tabla" align="center">Lugar</td>
+					<td class="tit_tabla" align="center">RBD</td>
+                    <td class="tit_tabla">Colegio</td>
+                    <td class="tit_tabla">Curso</td>
+                    <td class="tit_tabla">Tutor</td>
+                    <td class="tit_tabla" align="center">Puntaje</td>
+                </tr>
+
+        <?
+        if ($this->layout()->actcol) {
+
+                    $datos = $this->layout()->actcol;
+
+    foreach($datos as $key => $val){
+        //print_r($datos);
+
+        ?>
+        <tr>
+            <td ><? echo $val['lugar']; ?></td>
+			<td ><? echo $val['rbd']; ?></td>
+            <td ><? echo $val['nombre_colegio']; ?></td>
+            <td ><? echo $val['curso']; ?></td>
+            <td ><? echo $val['tutor']; ?></td>
+            <td class="puntaje"><? echo $val['puntaje']; ?></td>
+        </tr>
+    <? }
+    ?>
+                </table>
+
+            </div>
+
+
+        <? } ?>
+
+
+    </div>
+</div>

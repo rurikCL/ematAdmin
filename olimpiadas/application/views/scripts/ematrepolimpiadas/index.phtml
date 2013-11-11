@@ -1,0 +1,17 @@
+<?php echo $this->doctype(); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <?php echo $this->headMeta(); ?>
+    <?php echo $this->headTitle(); ?>
+    <?php echo $this->headLink()->prependStylesheet($this->baseUrl()."/reporte/css/olimpiadas-reporte.css"); ?>
+    <?php echo $this->headLink()->prependStylesheet($this->baseUrl()."/reporte/css/olimpiadas-extra.css"); ?>
+
+</head>
+<body>
+<div id="view-content">
+    <div class="box">
+	<?php echo $this->layout()->content; ?>
+    </div>
+</div>
+</body>
+</html>

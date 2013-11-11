@@ -1,0 +1,19 @@
+<?php
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle('Hilo');
+
+echo $this->doctype(); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <?php echo $this->headMeta(); ?>
+    <?php echo $this->headTitle(); ?>
+    <?php echo $this->headLink()->appendStylesheet('/Reporte/css/olimpiadas-reportes.css'); ?>
+    <?php echo $this->headLink()->prependStylesheet("/Reporte/css/olimpiadas-extra.css"); ?>
+</head>
+<body>
+<div id="content">
+      <?php echo $this->layout()->content; ?>
+</div>
+</body>
+</html>

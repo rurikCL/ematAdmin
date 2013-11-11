@@ -1,0 +1,62 @@
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Ematcons</b> and script/action name <b>veractivcurso</b></p>
+</div>
+<?
+if(isset($this->layout()->rowset))
+{
+
+			$ELTIPO=trim($this->layout()->s_tipo);
+
+			echo "<table class='dlist' id='DatosTabla'>\n";
+			echo "<!--COLUMN WIDTHS MUST MATCH HEADER ROW-->\n";
+			echo "<tbody>\n";
+		    echo "<!--ODD ROW WITH UNIQUE ID-->\n";
+	 
+	 
+			echo "     <tr>\n";
+			foreach ($this->layout()->rowset as $fila_col) 
+			{
+
+				 foreach($fila_col as $key => $value)
+				 {
+					echo "       <td bgcolor='#FFFF99'>".$key."</td>\n";
+				 }		
+				break;
+				
+			}
+
+			echo "     </tr>\n";
+	 
+	 
+	 
+	 
+			foreach ($this->layout()->rowset as $fila) 
+			{
+
+				 $LLAVE="";
+				 foreach($fila as $valor)
+				 {
+					if(trim($LLAVE)=="")
+					   $LLAVE=$valor;
+				 }		
+
+	 		     echo "<!--ODD ROW WITH UNIQUE ID-->\n";
+				 if ($ELTIPO=="1")
+					 echo "     <tr id=\"".$LLAVE."\" onmouseover=\"parent.rowMouseHover(this);\" onmouseout=\"parent.rowMouseOut(this);\" onclick=\"parent.rowClickSelect(this);\">\n";
+				 else	
+					 echo "     <tr id=\"".$LLAVE."\">\n";
+
+				 foreach($fila as $valor)
+				 {
+					 echo "       <td>".$valor."</td>\n";
+				 }				 
+				 echo "     </tr>\n";
+			
+			}
+
+			echo "</tbody>\n";
+			echo "</table>\n";
+
+}
+?>

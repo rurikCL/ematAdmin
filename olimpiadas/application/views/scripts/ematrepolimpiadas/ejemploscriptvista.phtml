@@ -1,0 +1,70 @@
+<? if ($this->layout()->rowset) {?>
+       <!--COMMENT: USES table.css-->
+<!--COMMENT: HEADER PORTION BEGIN-->
+<table class="TablaBasica">
+  <!--COLUMN WIDTHS MUST EQUAL 100%-->
+  <col width="22%"><col width="27%">
+  <col width="39%"><col width="12%">
+<tbody>
+  <!--COLUMN LABELS-->
+  </tbody>
+</table>
+<!--HEADER END-->
+<!--DATA PORTION BEGIN-->
+
+       <table id='DatosTabla' class="TablaBasica" summary="Lista de mis Gestiones, desde las mas recientes">
+        <tr>
+            <th>Gesti&oacute;n</th>
+            <td>C&oacute;digo</td>
+            <td>Resumen</td>
+            <td>Estado</td>
+            <td>N&#186; Interacc</td>
+            <td>Actualizada por</td>
+            <td>Fecha Act.</td>
+            <td>Iniciado por</td>
+            <td>Fecha Cre.</td>
+        </tr>
+        <? $i = 0; ?>
+        <? foreach($this->layout()->rowset as $key => $val){ ?>
+        <?if (trim($val['estado'])<> "En proceso interno") { ?>
+          <tr id="<?=$val["codgestion"]."~".$val["gestion"]."~".$val["estado"]?>"  onclick="parent.rowClickSelect(this);">
+         <? }else {?>
+          <tr style="background-color:lightyellow;" id="<?=$val["codgestion"]."~".$val["gestion"]."~".$val["estado"]?>"  onclick="parent.rowClickSelect(this);" >
+         <?}?>
+            <th scope="row"><? echo $this->escape($val['gestion']); ?></th>
+            <td style="text-align: center;"><? echo $this->escape($val['codgestion']); ?></td>
+            <td><? echo $this->escape($val['resumen']); ?></td>
+            <?if (trim($val['estado'])<> "En proceso interno") { ?>
+              <td><? echo $this->escape($val['estado']); ?></td>
+            <? }else {?>
+             <td style="font-size:110%;"><? echo $this->escape($val['estado']); ?></td>
+            <?}?>
+            <td style="text-align: center;"><? echo $this->escape($val['nivelactual']+1); ?></td>
+            <?if (intval($val['nivelactual'] + 1) > 1) { ?>
+                <?if (intval($val['sentidoactual'])==0) { ?>
+                   <td class="CellBasica0" style="vertical-align:super;text-align:center;color:Blue;font-weight:bold;">Cliente</td>
+                <? }else {?>
+                   <td class="CellBasica1" style="vertical-align:text-bottom;text-align:center;color:Red;font-weight:bold;">Ejecutivo</td>
+                <?}?>
+                <td style="text-align: center;"><? echo $this->escape($val['fechaactualizacion']); ?></td>
+            <? }else {?>
+                <td></td>
+                <td></td>
+            <?}?>
+            <?if (intval($val['sentido'])==0) { ?>
+              <td class="CellBasica0" style="vertical-align:super;text-align:center;color:Blue;font-weight:bold;">Cliente</td>
+            <? }else {?>
+             <td class="CellBasica1" style="vertical-align:text-bottom;text-align:center;color:Red;font-weight:bold;">Ejecutivo Bco</td>
+            <?}?>
+            <td style="text-align: center;"><? echo $this->escape($val['fechacreacion']); ?></td>
+        </tr>
+        <? ($i == 0 ? 1 : 0); ?>
+        <? } ?>
+ 
+    </table>
+ 
+<? }else{ ?>
+ 
+    <p>No tengo gestiones para mostrar</p>
+ 
+<? } ?>

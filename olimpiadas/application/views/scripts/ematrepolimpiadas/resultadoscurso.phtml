@@ -1,0 +1,51 @@
+
+    <div id="view-content">
+        <div class="box">
+
+
+
+    <div class="box_curso">
+        <div class="inner">
+            <div class="puntaje_big"><? echo round($this->layout()->puntaje,1); ?></div>
+            <div class="puntaje_small"><? echo $this->layout()->equipos; ?></div>
+            <div class="btn_ref"><a href="javascript: window.location.reload();">Refrescar resultados</a></div>
+        </div>
+    </div>
+<div id="1" class="box_alumno <?php if($this->layout()->usuario == "alumno") echo "short"; else echo "long";?>">
+    <table>
+        <tr class="tb_title">
+            <td>Equipo</td>
+            <td>Actividad</td>
+            <td>Hora</td>
+            <td>% <br/> Logro</td>
+            <td>Puntos <br/>Ganados</td>
+        </tr>
+<?
+if ($this->layout()->actcol) {
+
+    $datos = $this->layout()->actcol;
+
+    foreach($datos as $key => $val){
+    //print_r($datos);
+
+    ?>
+        <tr >
+            <td class="text-left"><? echo $val['nombre']; ?></td>
+            <td class="text-left"><? echo $val['descripcion']; ?></td>
+            <td><? echo $val['hora']; ?></td>
+            <td><? echo $val['puntaje']; ?></td>
+            <td><? echo $val['puntos']; ?></td>
+        </tr>
+    <? }
+
+}
+?>
+        </table>
+
+</div>
+
+
+
+
+        </div>
+    </div>
